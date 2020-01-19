@@ -65,11 +65,11 @@ public class Actividad_pedido_productos extends AppCompatActivity {
 
         final BdInteraccion bd=new BdInteraccion(this);
 
-        spinnerCategoria.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,bd.getCategorias()));
+        spinnerCategoria.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item,bd.getCategorias()));
 
         final Spinner cantidad=findViewById(R.id.spinnerCantidade);
         Integer[] cantidadPosible={1,2,3,4,5};
-        cantidad.setAdapter(new ArrayAdapter<>(this.getBaseContext(),android.R.layout.simple_spinner_item,cantidadPosible));
+        cantidad.setAdapter(new ArrayAdapter<>(this.getBaseContext(),android.R.layout.simple_spinner_dropdown_item,cantidadPosible));
 
 
         final Context contexto=this.getBaseContext();//Evitar caída al cambiar la orientación.
@@ -79,7 +79,7 @@ public class Actividad_pedido_productos extends AppCompatActivity {
                     @Override
                     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                             List<Producto> productos=bd.getProductosPorCat((String)adapterView.getSelectedItem());
-                            spinnerProducto.setAdapter(new ArrayAdapter(Actividad_pedido_productos.this,android.R.layout.simple_spinner_item,productos));
+                            spinnerProducto.setAdapter(new ArrayAdapter(Actividad_pedido_productos.this,android.R.layout.simple_spinner_dropdown_item,productos));
 
                     }
 
@@ -91,7 +91,7 @@ public class Actividad_pedido_productos extends AppCompatActivity {
         );
 
         Button seguinte=findViewById(R.id.botonSeguintePed);
-        final Intent lanzadorDirecPedido=new Intent(this,DireccionPedido.class);;
+        final Intent lanzadorDirecPedido=new Intent(this,DireccionPedido.class);
         seguinte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
